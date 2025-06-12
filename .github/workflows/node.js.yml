@@ -61,7 +61,7 @@ jobs:
         # ftp server
         server: wibbly.pl
         # ftp username
-        username: ${{ secrets.USER }}
+        username: ${{ secrets.API_USERNAME }}
         # ftp password
         password: ${{ secrets.PASSWORD }}
         # Server port to connect to (read your web hosts docs)
