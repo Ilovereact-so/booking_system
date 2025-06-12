@@ -2,7 +2,7 @@ const nodemailer = require("nodemailer");
 require('dotenv').config();
 
 const transporter = nodemailer.createTransport({
-  host: "wibbly.pl", // Mercury działa lokalnie
+  host: process.env.SMTP_HOST, // Mercury działa lokalnie
   port: 465, // lub inny ustawiony port
   secure: true, // Mercury nie używa TLS
   auth: {

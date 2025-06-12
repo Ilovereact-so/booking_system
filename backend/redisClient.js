@@ -1,9 +1,13 @@
 const redis = require('redis');
 
 // Tworzenie klienta Redis
-const redisClient = redis.createClient({
-    url: 'redis://0.0.0.0:6379'  // upewnij się, że to właściwy adres IP i port
-});
+const isProduction = process.env.NODE_ENV === 'production';
+
+const redisClient = redis.createClient(
+  isProduction
+    ? { socket: { path: process.env.REDIS_SOCKET_PATH } }
+    : { url: "redis://0.0.0.0:6379" }
+);
 
 // Obsługa błędów Redis
 redisClient.on('error', (err) => {
