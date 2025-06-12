@@ -7,7 +7,8 @@
   "scripts": {
     "migrate": "npx knex migrate:latest --knexfile ./db/knexfile.js",
     "dev": "nodemon index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "seeds": "npx knex seed:run --specyfic=02_appointments.js"
   },
   "keywords": [],
   "author": "",

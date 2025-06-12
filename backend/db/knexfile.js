@@ -38,6 +38,9 @@ module.exports = {
     },
     migrations: {
       tableName: 'server_migrations'
-    }
+    },
+    seeds: {
+      directory: './seeds',
+    },
   },
 };
