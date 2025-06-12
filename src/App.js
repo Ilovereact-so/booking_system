@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useRef, useState } from "react";
+import { motion, animate } from "framer-motion"
+import Day from "./Day";
+import Month from "./Month";
+import $ from 'jquery'
+import Hero from "./components/Hero";
+import Calendar from "./Calendar";
+import Calendar01 from "./components/Calendar01";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const App = ()=> {  
+  
+return(
+  <div>
+    <header className="h-[100vh] w-full bg-[#1d1c1c]">
+      <Hero/>
+    </header>
+    <section className="bg-[#1D1C1C]">
+      <Calendar01/>
+    </section>
+  </div>
+)
+  
 }
+
+
 
 export default App;
