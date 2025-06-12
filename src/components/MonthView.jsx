@@ -1,6 +1,6 @@
 import { forwardRef, useEffect, useImperativeHandle, useMemo, useRef, useState } from "react"
 import { motion } from "framer-motion"
-import {Close} from "css.gg"
+import { X } from "lucide-react";
 
 const MonthView = forwardRef((props, ref) => {
     const isBasedDate = useMemo(() => {
@@ -195,7 +195,7 @@ const MonthView = forwardRef((props, ref) => {
                 occupiedDays.includes(dayNumber(index)) && whoevermonthIam(index) ? "hidden" : "inline-block"
               }`}>{dayNumber(index)}</p><div className={`inline-flex rounded-full text-black ease-in-out duration-200 font-Poppins text-[14px] 01ll:px-6 01ll:py-3 mm:px-1 mm:py-1 px-[2px] py-[2px] ${
                 occupiedDays.includes(dayNumber(index)) && whoevermonthIam(index) ? "bg-[#d7a6ff]" : "hidden"
-              } `}>{ViewportWidth < mediumViewport ? <div className="mm:scale-[0.8] scale-[0.6]"><Close/></div>:"Zajęte"}</div></div></div>
+              } `}>{ViewportWidth < mediumViewport ? <div className="mm:scale-[0.8] scale-[0.6]"><X/></div>:"Zajęte"}</div></div></div>
             ))}
         </motion.div>
     </div>

@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import $ from "jquery"
 import Day from './Day';
 import Month01 from './Month01';
-import { ArrowLeft } from 'css.gg';
+import { ChevronLeft, ChevronRight, MoveLeft } from 'lucide-react';
 
 const Calendar01 = () => {
     const [isDate, setDate] = useState(() => {
@@ -191,7 +191,7 @@ const Calendar01 = () => {
             <div onClick={()=> isUserMode === "closed" ? DayComponentRef.current.callBackFunction() : null} className={`bg-[#323232] absolute top-[50%] translate-y-[-50%] 01ss:left-[-30px] left-[-15px] translate-x-[-100%] active:bg-[#ccc] ease-in-out duration-100 rounded-full p-[10px] ss:scale-[1] scale-[0.8] cursor-pointer z-10 ${
               getTypeValue() === 0 ? "hidden":"inline-block"
             }`}>
-              <ArrowLeft className="invert"/>
+              <MoveLeft className="invert"/>
             </div>
             <p className="font-bold ss:text-[70px] text-[50px] font-Poppins text-[#DBDBDB] relative z-[1]">
               {getTypeValue() === 0 ? null : Days[WhoseDayisit()] }
@@ -210,11 +210,11 @@ const Calendar01 = () => {
 
         <div className="flex items-center w-full justify-center mt-10">
           <div onClick={() => isUserMode === "closed" ? setIndex("prev") : null} className="bg-[#323232] active:bg-[#ccc] ease-in-out duration-100 rounded-full p-2 cursor-pointer">
-            <i className="gg-chevron-left invert"></i>
+            <ChevronLeft className='invert'/>
           </div>
           <div className="px-4 py-1 mx-2 font-Poppins mm:text-[20px] text-[16px] text-white">{isType}</div>
           <div onClick={() => isUserMode === "closed" ? setIndex("next") : null} className="bg-[#323232] active:bg-[#ccc] ease-in-out duration-100 rounded-full p-2 cursor-pointer">
-            <i className="gg-chevron-right invert"></i>
+            <ChevronRight className='invert'/>
           </div>
         </div>
       </div>

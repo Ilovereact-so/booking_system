@@ -1,6 +1,6 @@
 import React, { forwardRef, useEffect, useImperativeHandle, useRef, useState } from 'react'
 import { motion} from "framer-motion"
-import { Check, Close, Spinner } from 'css.gg'
+import { LoaderCircle, X, Check } from 'lucide-react'
 
 const Day = forwardRef((props,ref) => {
   const godziny = ()=>{
@@ -478,13 +478,13 @@ const Day = forwardRef((props,ref) => {
         </motion.div>
         <motion.div animate={isUserMode} variants={loaderBottominfoVariants} transition={{delay:"0.5"}} className='px-20 pt-10 pb-3 bg-[#161616] inline-flex flex-col absolute rounded-[40px] '>
           <motion.div animate={isUserMode} variants={spiner_loaderBottominfoVariants} className='min-h-[50px] justify-center items-center w-full scale-[2]'>
-            <Spinner/>
+            <LoaderCircle/>
           </motion.div>
           <motion.div animate={isUserMode} variants={check_loaderBottominfoVariants} transition={{delay:"0.5"}} className='min-h-[50px] justify-center items-center w-full'>
             <Check className='before:text-[#d7a6ff] after:text-[#d7a6ff]'/>
           </motion.div>
           <motion.div animate={isUserMode} variants={closeIcon_loaderBottominfoVariants} transition={{delay:"0.5"}} className='min-h-[50px] justify-center items-center w-full'>
-            <Close className='before:text-[#d7a6ff] after:text-[#d7a6ff]'/>
+            <X className='before:text-[#d7a6ff] after:text-[#d7a6ff]'/>
           </motion.div>
           <p className='mm:text-[20px] text-[16px] text-white font-normal font-Poppins mt-[30px] mb-[10px]'>{isRequestInfo.message}</p>
           <motion.div onClick={()=> {setUserMode("closed"); setActiveL(null); setActiveR(null)}} animate={isUserMode} variants={close_loaderBottominfoVariants} transition={{delay:"0.5"}} className='bg-black px-[30px] py-[15px] mm:text-[18px] text-[16px] font-bold font-Poppins rounded-full text-white relative bottom-[-30px] inline-flex justify-center cursor-pointer'>Zamknij</motion.div>
