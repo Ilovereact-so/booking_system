@@ -1,8 +1,6 @@
 import React, { forwardRef, useEffect, useImperativeHandle, useRef, useState } from 'react'
-import { motion, animate, delay } from "framer-motion"
-import $ from "jquery"
-import { ArrowLeft, Check, Close, Spinner } from 'css.gg'
-import { months } from 'moment/moment'
+import { motion} from "framer-motion"
+import { Check, Close, Spinner } from 'css.gg'
 
 const Day = forwardRef((props,ref) => {
   const godziny = ()=>{

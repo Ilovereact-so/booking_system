@@ -1,10 +1,4 @@
-import { useEffect, useRef, useState } from "react";
-import { motion, animate } from "framer-motion"
-import Day from "./Day";
-import Month from "./Month";
-import $ from 'jquery'
 import Hero from "./components/Hero";
-import Calendar from "./Calendar";
 import Calendar01 from "./components/Calendar01";
 
 const App = ()=> {  

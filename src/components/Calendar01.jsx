@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import $ from "jquery"
-import Day from '../Day';
+import Day from './Day';
 import Month01 from './Month01';
 import { ArrowLeft } from 'css.gg';
 

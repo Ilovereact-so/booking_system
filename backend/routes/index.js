@@ -1,6 +1,5 @@
 const express = require('express');
 const userController = require('../controller/user');
-const UserSMS = require('../twilio/index')
 const app = express();
 const router = express.Router();
 
