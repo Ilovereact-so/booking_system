@@ -143,8 +143,8 @@ const Calendar01 = () => {
     const changeUserMode = (newValue)=>{
       setUserMode(newValue)
     }
-    useEffect(() => {
-      (async ()=>{
+ useEffect(()=>{(async()=>{
+
         if (getTypeValue() === 1) {
           try {
           const url = process.env.NODE_ENV == "production" ? "https://api.booking-system.wibbly.pl/api/checkapphours":"http://localhost:3003/api/checkapphours"
@@ -171,7 +171,7 @@ const Calendar01 = () => {
             console.log(err)
           }
         }
-      })
+      })();
     }, [isDate.day, isType, isUserMode=="success"]);
 
 
