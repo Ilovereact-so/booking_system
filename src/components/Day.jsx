@@ -92,9 +92,10 @@ const Day = forwardRef((props,ref) => {
     setEmailState("send")
     setIsRunning(true);
     setTimer(30)
+    const url = process.env.NODE_ENV == "production" ? "https://api.booking-system.wibbly.pl/api/send-code":"http://localhost:3003/api/send-code"
     //$("#S_SMS_Btn").css("background-color","#5E5E5E").css("cursor","default")
     try {
-        const res = await fetch("http://localhost:3003/api/send-code", {
+        const res = await fetch(url, {
           method: "POST",
           headers: {
             "Accept": "application/json",
@@ -133,10 +134,10 @@ const Day = forwardRef((props,ref) => {
     )).toISOString();
 
     const delayPromise = delay(3000); // min. czas trwania całej operacji
-
+    const url = process.env.NODE_ENV == "production" ? "https://api.booking-system.wibbly.pl/api/checkapphours":"http://localhost:3003/api/checkapphours"
     try {
       // 1. Sprawdzenie dostępności terminu
-      const resCheck = await fetch("http://localhost:3003/api/checkapphours", {
+      const resCheck = await fetch(url, {
         method: "POST",
         headers: {
           "Accept": "application/json",
@@ -154,7 +155,8 @@ const Day = forwardRef((props,ref) => {
 
       if (resCheck.ok && !isTaken) {
         // 2. Termin wolny → tworzymy rezerwację + czekamy 3 sekundy
-        const addAppointmentPromise = fetch("http://localhost:3003/api/addappointment", {
+        const url = process.env.NODE_ENV == "production" ? "https://api.booking-system.wibbly.pl/api/addappointment":"http://localhost:3003/api/addappointment"
+        const addAppointmentPromise = fetch(url, {
           method: "POST",
           headers: {
             "Accept": "application/json",
@@ -504,8 +506,9 @@ const OTPInput = forwardRef(({ codeLength = 6, selectValue, emailState }, ref) =
 
   useImperativeHandle(ref, () => ({
     callVerifyFunction: async (email) => {
+      const url = process.env.NODE_ENV == "production" ? "https://api.booking-system.wibbly.pl/api/verify-code":"http://localhost:3003/api/verify-code"
       try {
-        const res = await fetch("http://localhost:3003/api/verify-code", {
+        const res = await fetch(url, {
           method: "POST",
           headers: {
             "Accept": "application/json",

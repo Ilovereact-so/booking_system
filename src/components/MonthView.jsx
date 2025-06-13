@@ -97,9 +97,10 @@ const MonthView = forwardRef((props, ref) => {
         year: isDate.year,
         month: isDate.month  
     })
+    const url = process.env.NODE_ENV == "production" ? "https://api.booking-system.wibbly.pl/api/checkappointment":"http://localhost:3003/api/checkappointment"
     useEffect(()=>{(async()=>{
         try{
-          const response = await fetch('http://localhost:3003/api/checkappointment',{
+          const response = await fetch(url,{
             method:'POST',
             headers:{
               'Content-Type':'application/json',

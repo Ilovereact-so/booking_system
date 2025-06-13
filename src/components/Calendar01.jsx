@@ -143,32 +143,32 @@ const Calendar01 = () => {
     const changeUserMode = (newValue)=>{
       setUserMode(newValue)
     }
-    useEffect(() => {
+    useEffect(async () => {
         if (getTypeValue() === 1) {
-            const send = JSON.stringify({
-                "year": isDate.year,
-                "month": isDate.month,
-                "day": isDate.day
+
+          const url = process.env.NODE_ENV == "production" ? "https://api.booking-system.wibbly.pl/api/checkapphours":"http://localhost:3003/api/checkapphours"
+          try {
+            // 1. Sprawdzenie dostępności terminu
+            const resCheck = await fetch(url, {
+              method: "POST",
+              headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/json"
+              },
+              body: JSON.stringify({
+                year: isDate.year,
+                month: isDate.month,
+                day: isDate.day
+              })
             });
 
-            $.ajax({
-                url: "http://localhost:3003/api/checkapphours",
-                type: "POST",
-                data: send,
-                crossDomain: true,
-                headers: {
-                "accept": "application/json",
-                "Access-Control-Allow-Origin": "*"
-                },
-                xhrFields: { cors: false },
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-            }).then((res) => {
-                console.log(res)
-                setAppointments(res)
-            }).catch((err) => {
-                console.log(err)
-            })
+            const resCheckData = await resCheck.json();
+            if(resCheck.ok){
+              setAppointments(resCheckData)
+            }
+          }catch (err) {
+            console.log(err)
+          }
         }
     }, [isDate.day, isType, isUserMode=="success"]);
 
