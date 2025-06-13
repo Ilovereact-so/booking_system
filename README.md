@@ -1,70 +1,98 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+<p align="center">
+  <img src="https://wibbly.pl/assets/logo_wibbly.svg" alt="Logo Wibbly" width="150"/>
+</p>
 
-In the project directory, you can run:
+# Booking System
 
-### `npm start`
+Full‑stackowy system do zarządzania rezerwacjami z wykorzystaniem Node.js, Express, Knex.js i React. Projekt wspiera środowiska developerskie oraz produkcyjne, uwzględniając konfigurację dla Redis, migracje bazy danych i seed’y.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+## 🌐 Demo online
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Projekt jest dostępny do podglądu pod adresem:  
+[https://booking-system.wibbly.pl](https://booking-system.wibbly.pl)
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 🚀 Funkcje
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Przeglądanie i tworzenie rezerwacji (`appointments`)
+- Powiązania wiele-do-wielu między rezerwacjami a usługami (`appointments_services`)
+- Obsługa klientów i usług
+- Obsługa środowisk `development` i `production`
+- Redis do cache lub sesji
 
-### `npm run eject`
+## 🧰 Stack technologiczny
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- **Backend**: Node.js, Express
+- **Baza danych**: MySQL / PostgreSQL (Knex.js jako warstwa ORM)
+- **Frontend**: React
+- **Cache**: Redis
+- **Zarządzanie migracjami/seedami**: Knex.js
+- **Hosting**: Środowisko z Node.js (np. panel hostingowy z obsługą `npm`, `SSH`, Redis socket)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## 📁 Struktura projektu
+```bash
+booking_system/
+├── backend/
+│ ├── db/
+│ │ ├── migrations/
+│ │ └── seeds/
+│ ├── knexfile.js
+│ ├── .env
+│ └── app.js
+└── frontend/
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## ⚙️ Instalacja i uruchomienie
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### 1. Klonowanie repozytorium
 
-## Learn More
+```bash
+git clone https://github.com/Ilovereact-so/booking_system.git
+cd booking_system/backend
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```
+### 2. Konfiguracja `.env`
+```bash
+NODE_ENV=development
+DB_CLIENT=mysql2
+DB_HOST=127.0.0.1
+DB_USER=root
+DB_PASSWORD=yourpassword
+DB_NAME=booking_system
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Redis lokalnie `TCP`:
+```REDIS_URL=redis://127.0.0.1:6379```
 
-### Code Splitting
+### Redis w środowisku produkcyjnym `socket`:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```REDIS_SOCKET_PATH=/home/USER/.redis/redis.sock```
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### 3. Instalacja zależności
+```
+npm install
+```
+### 4. Migracje i seedy
+```
+npx knex migrate:latest --knexfile db/knexfile.js
+npx knex seed:run --specific=db/seeds/02_appointments.js --knexfile db/knexfile.js
+```
+### 5. Uruchomienie serwera -- backend (nodemon)
+```
+npm run dev
+```
+### 6. Uruchomienie serwera -- frontend (react.js)
+```
+npm start
+```
 
-### Making a Progressive Web App
+## ⚠️ Informacje dodatkowe
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Ten projekt został stworzony jako demonstracja moich umiejętności i jest udostępniony do **wglądu**.  
+- Nie jest przeznaczony do użytku produkcyjnego ani komercyjnego.
