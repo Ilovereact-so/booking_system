@@ -8,7 +8,7 @@ exports.seed = async function(knex) {
   // Deletes ALL existing entries
   await knex('appointments_services').del();
   await knex('appointments').del();
-  await knex.raw('ALTER TABLE appointment_services AUTO_INCREMENT = 1');
+  await knex.raw('ALTER TABLE appointments_services AUTO_INCREMENT = 1');
   await knex.raw('ALTER TABLE appointments AUTO_INCREMENT = 1');
   // const client_id = 1;
   // const appointment_date = "2024-07-19 10:00:00";
