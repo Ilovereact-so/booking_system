@@ -506,8 +506,8 @@ const OTPInput = forwardRef(({ codeLength = 6, selectValue, emailState }, ref) =
 
   useImperativeHandle(ref, () => ({
     callVerifyFunction: async (email) => {
-      const url = process.env.NODE_ENV == "production" ? "https://api.booking-system.wibbly.pl/api/verify-code":"http://localhost:3003/api/verify-code"
       try {
+        const url = process.env.NODE_ENV == "production" ? "https://api.booking-system.wibbly.pl/api/verify-code":"http://localhost:3003/api/verify-code"
         const res = await fetch(url, {
           method: "POST",
           headers: {

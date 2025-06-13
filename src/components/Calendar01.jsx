@@ -143,11 +143,12 @@ const Calendar01 = () => {
     const changeUserMode = (newValue)=>{
       setUserMode(newValue)
     }
-    useEffect(async () => {
+    useEffect(() => {
+      (async ()=>{
         if (getTypeValue() === 1) {
-
-          const url = process.env.NODE_ENV == "production" ? "https://api.booking-system.wibbly.pl/api/checkapphours":"http://localhost:3003/api/checkapphours"
           try {
+          const url = process.env.NODE_ENV == "production" ? "https://api.booking-system.wibbly.pl/api/checkapphours":"http://localhost:3003/api/checkapphours"
+
             // 1. Sprawdzenie dostępności terminu
             const resCheck = await fetch(url, {
               method: "POST",
@@ -170,6 +171,7 @@ const Calendar01 = () => {
             console.log(err)
           }
         }
+      })
     }, [isDate.day, isType, isUserMode=="success"]);
 
 
