@@ -455,8 +455,8 @@ const Day = forwardRef((props,ref) => {
         <p className='mt-4 text-[12px]'>informacja: na numer telefonu wyślemy 
         przypomnienie o wizycie 2 dni przed </p>
       </div> */}
-      <motion.div animate={isUserMode} variants={BottominfoVariants} className='absolute top-0 right-0 w-full h-[100vh] bg-[#322a3b8f] flex flex-col justify-center items-center z-10 overflow-hidden'>
-        <motion.div animate={isUserMode} variants={contentBottominfoVariants} transition={{translateX:{type:"spring", stiffness: 100, damping: 10}}} className='bg-[#161616] flex flex-col items-center justify-between font-Poppins pt-10 mm:px-20 px-10 rounded-[50px] max-w-[580px] relative text-white'>
+      <motion.div animate={isUserMode} variants={BottominfoVariants} className='absolute top-0 right-0 w-full h-[100vh] bg-[#322a3b8f] hidden flex-col justify-center items-center z-10 overflow-hidden'>
+        <motion.div animate={isUserMode} variants={contentBottominfoVariants} transition={{translateX:{type:"spring", stiffness: 100, damping: 10}}} className='bg-[#161616] hidden flex-col items-center justify-between font-Poppins pt-10 mm:px-20 px-10 rounded-[50px] max-w-[580px] relative text-white'>
           <i onClick={()=>cancelAuth()} className="gg-close top-4 right-8 absolute cursor-pointer"/>
           <p className='text-center text-[clamp(14px,3vw,18px)] mb-5'>Aby potwierdzić twoją wizytę wyślemy<br/>
           <span className='font-bold'> 6-ścio cyfrowy kod</span> na podany <br/> email: 
@@ -478,7 +478,7 @@ const Day = forwardRef((props,ref) => {
           </div>
           <p className='text-[10px] mb-4'>Naciśnij by wysłać.</p>
         </motion.div>
-        <motion.div animate={isUserMode} variants={loaderBottominfoVariants} transition={{delay:"0.5"}} className='px-20 pt-10 pb-3 bg-[#161616] inline-flex flex-col absolute rounded-[40px] '>
+        <motion.div animate={isUserMode} variants={loaderBottominfoVariants} transition={{delay:"0.5"}} className='px-20 pt-10 pb-3 bg-[#161616] flex-col absolute rounded-[40px] hidden'>
           <motion.div animate={isUserMode} variants={spiner_loaderBottominfoVariants} className='min-h-[50px] justify-center items-center w-full scale-[2]'>
             <LoaderCircle/>
           </motion.div>
