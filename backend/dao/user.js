@@ -104,7 +104,7 @@ async loginUser(password, userdata, usertype){
     console.log(client_id,appointment_date,total_cost)
     const id = await db("appointments").insert({client_id,appointment_date,total_cost, appointment_number})
     
-    await db("appointment_services").insert({appointment_id:id, service_id:1})
+    await db("appointments_services").insert({appointment_id:id, service_id:1})
    return id
   }
 
