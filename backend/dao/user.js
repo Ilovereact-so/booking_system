@@ -99,10 +99,10 @@ async loginUser(password, userdata, usertype){
   async addAppointment(client_id, appointment_date, total_cost){
 
     const date = new Date(appointment_date)
-    const appointment__number = randomToken(14).toUpperCase() + date.getFullYear() + randomToken(2).toUpperCase() + date.getMonth() + randomToken(2).toUpperCase() + date.getDate() + randomToken(2).toUpperCase() + date.getHours() + "-" + date.getMinutes() + randomToken(4).toUpperCase() 
+    const appointment_number = randomToken(14).toUpperCase() + date.getFullYear() + randomToken(2).toUpperCase() + date.getMonth() + randomToken(2).toUpperCase() + date.getDate() + randomToken(2).toUpperCase() + date.getHours() + "-" + date.getMinutes() + randomToken(4).toUpperCase() 
         
     console.log(client_id,appointment_date,total_cost)
-    const id = await db("appointments").insert({client_id,appointment_date,total_cost, appointment__number})
+    const id = await db("appointments").insert({client_id,appointment_date,total_cost, appointment_number})
     
     await db("appointment_services").insert({appointment_id:id, service_id:1})
    return id

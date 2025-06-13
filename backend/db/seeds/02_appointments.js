@@ -6,7 +6,7 @@ const seed_userDAO = require('../../dao/user');
  */
 exports.seed = async function(knex) {
   // Deletes ALL existing entries
-  await knex('appointment_services').del();
+  await knex('appointments_services').del();
   await knex('appointments').del();
   await knex.raw('ALTER TABLE appointment_services AUTO_INCREMENT = 1');
   await knex.raw('ALTER TABLE appointments AUTO_INCREMENT = 1');
